@@ -5,40 +5,50 @@ import socket
 DEST_IP = '10.40.0.46'
 DEST_PORT = 9993
 
+# Hash map for unit conversion. Values are converted into either Kbits or Kibits.
+hash_map = {
+    'Kbit': 1,
+    'Mbit': 1000,
+    'Gbit': 1000*1000,
+    'Kibit': 1,
+    'Mibit': 1024,
+    'Gibit': 1024*1024
+}
+
 
 def main():
-
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
+    sep = '\n'  # Used to add a separator to the string for sending the resulting ratio to the server
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     client_socket.connect((DEST_IP, DEST_PORT))
 
-    to_compute, server_address = client_socket.recv(1024)
+    to_compute = client_socket.recv(1024)
 
     print(to_compute.decode())
 
     # Divide the message received from the server into an array.
-    infos = to_compute.split()
+    infos = to_compute.decode().split()
 
-    x, y = infos[0], infos[2]
+    x, y = int(infos[0]), int(infos[2])
 
     # Convert values if they are not in Kibit/Kbit
-    if infos[1] == "Mibit":
-        x *= 1024
-    elif infos[1] == "Gibit":
-        x *= 1024*1024
+    x *= hash_map[infos[1]]
+    y *= hash_map[infos[3]]
 
-    if infos[3] == "Mbit":
-        y *= 1000
-
-    elif infos[3] == "Gbit":
-        y *= 1000*1000
+    # Make x and y of the same unit value
+    if len(infos[3]) == 4:
+        y /= 1.024
+    else:
+        x /= 1.024
 
     ratio = x / y
     print(ratio)
 
-    client_socket.sendto(ratio.encode(), (DEST_IP, DEST_PORT))
+    val = str(ratio) + sep
 
-    flag, server_address = client_socket.recv(2048)
+    client_socket.sendto(val.encode(), (DEST_IP, DEST_PORT))
+
+    flag = client_socket.recv(2048)
 
     print(flag.decode())
 
