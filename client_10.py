@@ -1,8 +1,6 @@
 # Python program to sum of two numbers
 # using bitwise operator
 
-
-
 import socket
 import time
 
@@ -65,6 +63,11 @@ while True:
     else:
         break
 
+for n in array:
+    if n == 0:
+        n = 1
+    else:
+        n = 0
 # print(checksum)
 
 # print(number1)
