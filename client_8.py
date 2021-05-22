@@ -21,18 +21,17 @@ s.close()
 
 
 #Scorebot
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('10.40.0.46', 11111)
-s.connect(server_address)
 
-request = request.split()[34]
-print(request)
 NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
 for n in NAME:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = ('10.40.0.46', 11111)
+    s.connect(server_address)
+    request = request.split()[34]
+    print(request)
     scorebot = n + " 8 " + request
     s.send(scorebot.encode())
     response_flag = s.recv(1024)
     print(response_flag.decode())
+    s.close()
     time.sleep(1)
-
-s.close()
