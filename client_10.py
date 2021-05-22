@@ -4,25 +4,18 @@
 import socket
 import time
 
-# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# server_address = ('10.40.0.46', 9999)
-# s.connect(server_address)
-#
-# request = s.recv(1024).decode()
-# print(request)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_address = ('10.40.0.46', 9999)
+s.connect(server_address)
 
-# number1 = request.split()[0]
-# number2 = request.split()[1]
+request = s.recv(1024).decode()
+print(request)
 
-number1 = 10110100
-number2 = 10011001
-# print(number1)
-# print(number2)
+number1 = request.split()[0]
+number2 = request.split()[1]
 
 A = [int(x) for x in str(number1)]
 B = [int(a) for a in str(number2)]
-# print(A)
-# print(B)
 
 checksum = ''
 carry = 0
@@ -30,6 +23,7 @@ while True:
     if len(str(checksum)) != 8:
         if checksum != '':
             carry = int(str(checksum)[0])
+            checksum = checksum[1:]
             A = [int(x) for x in str(checksum)]
             checksum = ''
             B = [0,0,0,0,0,0,0,0]
@@ -63,12 +57,14 @@ while True:
     else:
         break
 
-for n in array:
-    if n == 0:
-        n = 1
-    else:
-        n = 0
-# print(checksum)
+print(checksum)
+
+# for n in array:
+#     if n == 0:
+#         n = 1
+#     else:
+#         n = 0
+
 
 # print(number1)
-# s.close()
+s.close()
