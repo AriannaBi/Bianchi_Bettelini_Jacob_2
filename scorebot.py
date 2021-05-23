@@ -115,7 +115,7 @@ def client_9():
     flag = subprocess.check_output([cmd, './client_9.py']).decode().strip()
     flag = flag.split()[24]
     flag = base64.b64decode(flag).decode()
-    print("SCOREBOT client_8:")
+    print("SCOREBOT client_9:")
     NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
     for n in NAME:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -129,10 +129,29 @@ def client_9():
         time.sleep(1)
 
 
-client_1()
-client_2()
-client_4()
-client_5()
-client_6()
-client_8()
-client_9()
+def client_10():
+    time.sleep(1)
+    flag = subprocess.check_output([cmd, './client_10.py']).decode().strip()
+    flag = flag.split()[3]
+    print("SCOREBOT client_10:")
+    NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
+    for n in NAME:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = ('10.40.0.46', 11111)
+        s.connect(server_address)
+        scorebot = n + " 10 " + flag
+        s.send(scorebot.encode())
+        response_flag = s.recv(1024)
+        print(response_flag.decode())
+        s.close()
+        time.sleep(1)
+
+
+# client_1()
+# client_2()
+# client_4()
+# client_5()
+# client_6()
+# client_8()
+# client_9()
+# client_10()
