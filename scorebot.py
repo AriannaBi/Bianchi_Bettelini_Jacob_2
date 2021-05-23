@@ -11,7 +11,6 @@ cmd = 'python3'
 def client_1():
     time.sleep(1)
     flag = subprocess.check_output([cmd, './client_1.py']).decode().strip()
-    print(flag)
     print("SCOREBOT client_1:")
     NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
     for n in NAME:
