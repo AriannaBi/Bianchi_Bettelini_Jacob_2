@@ -3,6 +3,7 @@
 import socket
 import subprocess
 import time
+import base64
 
 cmd = 'python3'
 
@@ -10,6 +11,7 @@ cmd = 'python3'
 def client_1():
     time.sleep(1)
     flag = subprocess.check_output([cmd, './client_1.py']).decode().strip()
+    print(flag)
     print("SCOREBOT client_1:")
     NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
     for n in NAME:
@@ -108,10 +110,29 @@ def client_8():
         s.close()
         time.sleep(1)
 
+def client_9():
+    time.sleep(1)
+    flag = subprocess.check_output([cmd, './client_9.py']).decode().strip()
+    flag = flag.split()[21]
+    flag = base64.b64decode(flag).decode()
+    print("SCOREBOT client_8:")
+    NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
+    for n in NAME:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = ('10.40.0.46', 11111)
+        s.connect(server_address)
+        scorebot = n + " 9 " + flag
+        s.send(scorebot.encode())
+        response_flag = s.recv(1024)
+        print(response_flag.decode())
+        s.close()
+        time.sleep(1)
+
 
 # client_1()
 # client_2()
 # client_4()
 # client_5()
-client_6()
+# client_6()
 # client_8()
+# client_9()

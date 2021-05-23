@@ -15,6 +15,8 @@ request = s.recv(1024)
 request = request.decode()
 print(post)
 print(request)
-
+requestq = s.recv(1024)
+requestq = requestq.decode()
+print(requestq)
 
 s.close()
