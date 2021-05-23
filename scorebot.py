@@ -113,7 +113,7 @@ def client_8():
 def client_9():
     time.sleep(1)
     flag = subprocess.check_output([cmd, './client_9.py']).decode().strip()
-    flag = flag.split()[21]
+    flag = flag.split()[24]
     flag = base64.b64decode(flag).decode()
     print("SCOREBOT client_8:")
     NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
@@ -129,10 +129,10 @@ def client_9():
         time.sleep(1)
 
 
-# client_1()
-# client_2()
-# client_4()
-# client_5()
-# client_6()
-# client_8()
-# client_9()
+client_1()
+client_2()
+client_4()
+client_5()
+client_6()
+client_8()
+client_9()
