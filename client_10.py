@@ -57,13 +57,19 @@ while True:
     else:
         break
 
-print(checksum)
+array = str(checksum)
+flipbits = ''
 
-# for n in array:
-#     if n == 0:
-#         n = 1
-#     else:
-#         n = 0
+for bit in array:
+    if bit == '0':
+        flipbits += '1'
+    else:
+        flipbits += '0'
 
+print(flipbits)
+s.send(flipbits.encode())
+
+flag = s.recv(1024)
+print(flag.decode())
 
 s.close()
