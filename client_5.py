@@ -44,23 +44,10 @@ print(result)
 
 #Send the result and receive the flag
 s.send(result.encode())
-request = s.recv(1024)
-request = request.decode()
-print(request)
+flag = s.recv(1024)
+flag = flag.decode()
+print(flag)
 
 s.close()
 
 
-#Scorebot
-print("SCOREBOT:")
-NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
-for n in NAME:
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('10.40.0.46', 11111)
-    s.connect(server_address)
-    scorebot = n + " 5 " + request
-    s.send(scorebot.encode())
-    response_flag = s.recv(1024)
-    print(response_flag.decode())
-    s.close()
-    time.sleep(1)
