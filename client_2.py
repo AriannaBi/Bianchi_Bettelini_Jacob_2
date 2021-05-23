@@ -12,11 +12,12 @@ def main():
 
     client_socket.connect((DEST_IP, DEST_PORT))
 
-    message = input("")
+    message = "helo"
     client_socket.sendto(message.encode(), (DEST_IP, DEST_PORT))
 
     modified_message, server_address = client_socket.recvfrom(2048)
 
+    print(message)
     print(modified_message.decode())
 
     client_socket.close()

@@ -52,8 +52,7 @@ s.close()
 
 
 #Scorebot
-
-
+print("SCOREBOT:")
 NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
 for n in NAME:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

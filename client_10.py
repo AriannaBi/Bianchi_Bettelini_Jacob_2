@@ -66,5 +66,4 @@ print(checksum)
 #         n = 0
 
 
-# print(number1)
 s.close()
