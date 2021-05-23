@@ -21,7 +21,7 @@ def client_1():
         scorebot = n + " 1 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -38,7 +38,24 @@ def client_2():
         scorebot = n + " 2 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
+        s.close()
+        time.sleep(1)
+
+def client_3():
+    time.sleep(1)
+    flag = subprocess.check_output([cmd, './client_3.py']).decode().strip()
+    flag = flag.split()[3]
+    print("SCOREBOT client_3:")
+    NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
+    for n in NAME:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = ('10.40.0.46', 11111)
+        s.connect(server_address)
+        scorebot = n + " 3 " + flag
+        s.send(scorebot.encode())
+        response_flag = s.recv(1024)
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -55,7 +72,7 @@ def client_4():
         scorebot = n + " 4 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -72,7 +89,7 @@ def client_5():
         scorebot = n + " 5 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -89,7 +106,24 @@ def client_6():
         scorebot = n + " 6 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
+        s.close()
+        time.sleep(1)
+
+def client_7():
+    time.sleep(1)
+    flag = subprocess.check_output([cmd, './client_7.py']).decode().strip()
+    flag = flag.split()[12]
+    print("SCOREBOT client_7:")
+    NAME = ["arianna.bianchi", "carlo.bettelini", "johan.jacob"]
+    for n in NAME:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = ('10.40.0.46', 11111)
+        s.connect(server_address)
+        scorebot = n + " 7 " + flag
+        s.send(scorebot.encode())
+        response_flag = s.recv(1024)
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -106,7 +140,7 @@ def client_8():
         scorebot = n + " 8 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -124,7 +158,7 @@ def client_9():
         scorebot = n + " 9 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
@@ -142,16 +176,18 @@ def client_10():
         scorebot = n + " 10 " + flag
         s.send(scorebot.encode())
         response_flag = s.recv(1024)
-        print(response_flag.decode())
+        print(n + " "+ response_flag.decode())
         s.close()
         time.sleep(1)
 
 
-# client_1()
-# client_2()
-# client_4()
-# client_5()
-# client_6()
-# client_8()
-# client_9()
-# client_10()
+client_1()
+client_2()
+client_3()
+client_4()
+client_5()
+client_6()
+client_7()
+client_8()
+client_9()
+client_10()
