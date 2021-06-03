@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+# No need to define 10 functions. You can abstract by behaviour: create one function that takes the challenge number and call it 10 times
 import socket
 import subprocess
 import time

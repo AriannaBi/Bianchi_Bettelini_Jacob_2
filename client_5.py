@@ -5,6 +5,7 @@ from decimal import Decimal
 import time
 
 def convert_measure(n):
+    # You could use pow() in order to make it more readable
     if n == 'Kb':
         return 1000
     elif n == 'Mb':

@@ -3,6 +3,7 @@
 import socket
 
 # Hash map for unit conversion. Values are converted into either Kbits or Kibits.
+# Why not converting all in bits?
 hash_map = {
     'Kbit': 1,
     'Mbit': 1000,
